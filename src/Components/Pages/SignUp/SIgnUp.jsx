@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 
 const SIgnUp = () => {
 
-    const {createUser}=useContext(AuthContext)
+    const {createUser,setUser , googleSignIn}=useContext(AuthContext)
     const navigate=useNavigate();
     const [error,setError]=useState({});
 
@@ -40,6 +40,14 @@ const SIgnUp = () => {
         createUser(email, password)
             .then(result => {
                 const user = result.user;
+                const newUser={name,email}
+                fetch('http://localhost:5000/users',{
+                    method: 'POST',
+                    headers:{
+                        'content-type':'application/json'
+                    },
+                    body: JSON.stringify(newUser)
+                })
                 setUser(user)
                 updateProfileUser({ displayName: name, photoURL: photo })
                     .then(() => {
@@ -56,6 +64,13 @@ const SIgnUp = () => {
 
     }
 
+    const handleGoogleSignIn=()=>{
+        googleSignIn()
+        .then(()=>{
+            navigate("/");
+        })
+    }
+    
 
 
     
@@ -105,11 +120,11 @@ const SIgnUp = () => {
                 </div>
             </form>
             <p className="text-center font-semibold"> Already have an account? <Link className="text-red-500" to='/auth/login'>Login</Link></p>
-            {/* <div className="*:w-full mt-5">
+            <div className="*:w-full mt-5">
                 <button onClick={handleGoogleSignIn} className="btn text-blue-600">
                     Login with Google
                 </button>
-            </div> */}
+            </div>
         </div>
     </div>
     );

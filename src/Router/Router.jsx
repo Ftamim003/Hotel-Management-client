@@ -8,6 +8,8 @@ import Rooms from "../Components/Pages/Rooms";
 import MyBookings from "../Components/Pages/MyBookings";
 import Login from "../Components/Pages/Login/Login";
 import SIgnUp from "../Components/Pages/SignUp/SIgnUp";
+import AuthLayout from "../Components/Layouts/AuthLayouts/AuthLayout";
+import PrivateRoutes from "../Routes/PrivateRoute/PrivateRoutes";
 
 
   const router = createBrowserRouter([
@@ -17,7 +19,8 @@ import SIgnUp from "../Components/Pages/SignUp/SIgnUp";
       children:[
         {
             path: '/',
-            element: <Home></Home>
+            element: <Home></Home>,
+            loader:()=> fetch('http://localhost:5000/rooms')
         },
         {
             path:'rooms',
@@ -25,18 +28,26 @@ import SIgnUp from "../Components/Pages/SignUp/SIgnUp";
         },
         {
             path:'my-bookings',
-            element:<MyBookings></MyBookings>
+            element:<PrivateRoutes><MyBookings></MyBookings></PrivateRoutes>
         },
+      
+      ]
+      
+    },
+    {
+       path:'auth',
+       element:<AuthLayout></AuthLayout>,
+       children:[
         {
-            path:'login',
+            path:'/auth/login',
             element:<Login></Login>
         },
         {
-            path:'signUp',
+            path:'/auth/signUp',
             element:<SIgnUp></SIgnUp>
         }
-      ]
-    },
+       ]
+    }
   ]);
 
   export default router
