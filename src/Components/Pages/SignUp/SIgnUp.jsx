@@ -1,14 +1,15 @@
 import { useContext, useState } from "react";
 import { AuthContext } from "../../../Provider/AuthProvider";
 import { Link, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import Swal from "sweetalert2";
 
 const SIgnUp = () => {
 
-    const {createUser,setUser , googleSignIn}=useContext(AuthContext)
+    const {setUser,createUser,updateProfileUser,googleSignIn}=useContext(AuthContext);
+
     const navigate=useNavigate();
     const [error,setError]=useState({});
-
-
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -40,21 +41,20 @@ const SIgnUp = () => {
         createUser(email, password)
             .then(result => {
                 const user = result.user;
-                const newUser={name,email}
-                fetch('http://localhost:5000/users',{
-                    method: 'POST',
-                    headers:{
-                        'content-type':'application/json'
-                    },
-                    body: JSON.stringify(newUser)
-                })
                 setUser(user)
                 updateProfileUser({ displayName: name, photoURL: photo })
                     .then(() => {
-
+                          
                         navigate("/");
+                         Swal.fire({
+                                            icon: "success",
+                                            title: "Login Successful",
+                                            text: `Welcome, ${user.displayName || "User"}!`,
+                                            timer: 3000,
+                                            showConfirmButton: false,
+                                        });
                     })
-                //console.log(user)
+                
             })
             .catch((error) => {
                 const errorCode = error.code;

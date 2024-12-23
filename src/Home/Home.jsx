@@ -8,14 +8,18 @@ import "leaflet/dist/leaflet.css";
 import { useLoaderData } from "react-router-dom";
 import Rooms from "../Components/Pages/Rooms";
 
+
 const Home = () => {
     const rooms = useLoaderData();
     const handleRedirect = () => {
-        window.location.href = "/rooms";
+        window.location.href = "/allRooms";
     };
 
     return (
+        <>
+       
         <div className="w-full">
+            
             {/* Banner Section */}
             <div className="relative w-full h-72 lg:h-96 bg-gray-900">
                 <Swiper
@@ -254,6 +258,7 @@ const Home = () => {
 
 
         </div>
+        </>
     );
 };
 

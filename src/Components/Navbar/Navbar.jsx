@@ -4,10 +4,21 @@ import { AuthContext } from "../../Provider/AuthProvider";
 
 
 const Navbar = () => {
-    const {user,logOut}=useContext(AuthContext)
+    const {user,setUser,logOut}=useContext(AuthContext)
+
+    
+    const handleLogout = async () => {
+        try {
+            await logOut();
+            setUser(null); // Clear user state explicitly
+           // Redirect to login page after logout
+        } catch (error) {
+            console.error("Logout failed", error);
+        }
+    };
     return (
-        <div>
-           <div className="">
+        <div >
+            <div className="">
                 <nav className="flex items-center">
                     <div className="navbar ">
                         <div className="navbar-start">
@@ -17,47 +28,82 @@ const Navbar = () => {
                                 </div>
                                 <ul
                                     tabIndex="0"
-                                    className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-28 p-2 shadow">
+                                    className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[2] mt-3 w-28 p-2 shadow">
                                     <li><NavLink to='/'> Home </NavLink></li>
-                                    <li><NavLink to='/rooms'>Rooms </NavLink></li>
-                                    <li> <NavLink to="/my-bookings">My Bookings</NavLink></li>
-                                    {/* <li><NavLink to='/about'> About Us  </NavLink></li> */}
-                                    {/* {
+                                    <li><NavLink to='/allRooms'>All Rooms </NavLink></li>
+                                   
+
+                                    {
                                         user && <>
-                                            <li><NavLink to='/profile'> Profile  </NavLink></li>
+
+                                            <li><NavLink to='/my-bookings'>My Booking</NavLink></li>
                                         </>
-                                    } */}
+                                    }
+
                                 </ul>
                             </div>
-                            <div className="flex gap-3 items-center">
+                            <div className="flex items-center w-72">
 
-                                <h1 className="font-bold text-2xl text-blue-600 "><NavLink to='/'>Lingo Bingo</NavLink></h1>
+                                <h1 className="font-bold text-2xl text-orange-600 hidden md:block"><NavLink to='/'>
+                                GetawayInn  </NavLink> </h1>
+                                <div className="text-center mt-5 ">
+                                </div>
+
                             </div>
                         </div>
                         <div className="navbar-center hidden md:flex">
                             <ul className="menu menu-horizontal px-1 text-lg">
                                 <li ><NavLink to='/'> Home </NavLink></li>
-                                <li><NavLink to='/rooms'>Rooms </NavLink></li>
-                                <li> <NavLink to="/my-bookings">My Bookings</NavLink></li>
-                                {/* <li><NavLink to='/about'> About Us  </NavLink></li> */}
+                                <li><NavLink to='/allRooms'>All Rooms </NavLink></li>
+
                                 {
                                     user && <>
-                                        <li><NavLink to='/profile'> Profile  </NavLink></li>
+                                        <li><NavLink to='/my-bookings'> My Bookings  </NavLink></li>
                                     </>
                                 }
+
+                               
                             </ul>
                         </div>
                         <div className="navbar-end flex gap-7">
-                            {
-                                user && user?.email ? <div className="flex items-center gap-1">
-                                    <p><span className="text-sm">Welcome,</span> {user.displayName}</p>
-                                    <img className="w-10 h-10 rounded-full" src={user?.photoURL} alt="" />
+                            {!user ? (
+                                <>
+                                    <Link
+                                        to="/auth/login"
+                                        className="btn btn-primary hover:bg-green-600 transition-colors duration-300 mr-6"
+                                    >
+                                        Login
+                                    </Link>
+                                    <Link
+                                        to="/auth/register"
+                                        className="btn bg-orange-400 hover:bg-blue-500 transition-colors duration-300"
+                                    >
+                                        Register
+                                    </Link>
+                                </>
+                            ) : (
+                                <div className="dropdown dropdown-end">
+                                    <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+                                        <div className="w-10 rounded-full">
+                                            <img src={user.photoURL} alt="User Avatar" />
+                                        </div>
+                                    </label>
+                                    <ul
+                                        tabIndex={0}
+                                        className="menu menu-sm dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 z-[2] "
+                                    >
+                                        <li>
+                                            <span className="font-bold">Hello, {user.displayName}</span>
+                                        </li>
 
-                                </div> : ""
-                            }
-                            {
-                                user && user?.email ? <button onClick={logOut} className="btn btn-primary hover:bg-blue-600 transition-colors duration-300">Log-out</button> : <Link to='/auth/login' className="btn btn-primary hover:bg-blue-600 transition-colors duration-300">Login</Link>
-                            }
+                                        <li>
+                                            <button onClick={handleLogout} className="text-red-600">
+                                                Logout
+                                            </button>
+                                        </li>
+                                    </ul>
+                                </div>
+                            )}
 
                         </div>
                     </div>
