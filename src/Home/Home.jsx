@@ -36,15 +36,15 @@ const Home = () => {
                     <SwiperSlide>
                         <div className="relative">
                             <img
-                                src="https://i.ibb.co.com/h2T1Qxn/suite-hotels.jpg" // Replace with your actual image path
+                                src="https://i.ibb.co.com/gy84qXL/3d-rendering-luxury-bedroom-suite-resort-hotel-with-twin-bed-living.jpg" 
                                 alt="Luxury Rooms"
-                                className="w-full h-72 md:h-96 lg:h-96 object-cover" // Added responsive classes
+                                className="w-full h-72 md:h-96 lg:h-96 object-cover" 
                             />
-                            <div className="absolute top-1/3 left-5 md:left-10 text-white">
-                                <h1 className="text-2xl md:text-4xl font-bold mb-4">
+                            <div className="absolute top-1/3 left-5 md:left-16 text-white">
+                                <h1 className="text-2xl md:text-4xl font-bold mb-4 text-center">
                                     Discover Luxury Rooms
                                 </h1>
-                                <p className="mb-4">
+                                <p className="mb-4 text-center text-white font-bold text-xl">
                                     Experience the best comfort and luxury.
                                 </p>
                                 <button
@@ -62,15 +62,15 @@ const Home = () => {
                     <SwiperSlide>
                         <div className="relative">
                             <img
-                                src="https://i.ibb.co.com/h2T1Qxn/suite-hotels.jpg" // Replace with your actual image path
+                                src="https://i.ibb.co.com/kMNdrV6/interior-modern-comfortable-hotel-room.jpg" // Replace with your actual image path
                                 alt="Luxury Rooms"
                                 className="w-full h-72 md:h-96 lg:h-96 object-cover" // Added responsive classes
                             />
-                            <div className="absolute top-1/3 left-5 md:left-10 text-white">
+                            <div className="absolute top-1/3 left-5 md:left-16 text-white">
                                 <h1 className="text-2xl md:text-4xl font-bold mb-4">
                                     Discover Luxury Rooms
                                 </h1>
-                                <p className="mb-4">
+                                <p className="mb-4 text-center text-gray-500 font-bold text-xl">
                                     Experience the best comfort and luxury.
                                 </p>
                                 <button
@@ -88,15 +88,15 @@ const Home = () => {
                     <SwiperSlide>
                         <div className="relative">
                             <img
-                                src="https://i.ibb.co.com/h2T1Qxn/suite-hotels.jpg" // Replace with your actual image path
+                                src="https://i.ibb.co.com/9s5DL16/luxury-bedroom-suite-resort-high-rise-hotel-with-working-table.jpg" // Replace with your actual image path
                                 alt="Luxury Rooms"
                                 className="w-full h-72 md:h-96 lg:h-96 object-cover" // Added responsive classes
                             />
-                            <div className="absolute top-1/3 left-5 md:left-10 text-white">
+                            <div className="absolute top-1/3 left-5 md:left-16 text-white">
                                 <h1 className="text-2xl md:text-4xl font-bold mb-4 text-center3cde">
                                     Discover Luxury Rooms
                                 </h1>
-                                <p className="mb-4">
+                                <p className="mb-4 text-center text-gray-500 font-bold text-xl">
                                     Experience the best comfort and luxury.
                                 </p>
                                 <button
@@ -185,7 +185,7 @@ const Home = () => {
                     <div className="card shadow-xl border border-base-300 bg-base-100 rounded-md">
                         <figure>
                             <img
-                                src="https://via.placeholder.com/400x250"
+                                src="https://i.ibb.co.com/6Hn0G8J/grand-banquets-chembur-mumbai.jpg"
                                 alt="Grand Banquet Hall"
                                 className="h-48 w-full object-cover rounded-t-md"
                             />
@@ -208,7 +208,7 @@ const Home = () => {
                     <div className="card shadow-xl border border-base-300 bg-base-100 rounded-md">
                         <figure>
                             <img
-                                src="https://via.placeholder.com/400x250"
+                                src="https://i.ibb.co.com/fdfdypX/Modern-meeting-room-with-advanced-technology.webp"
                                 alt="Conference Room"
                                 className="h-48 w-full object-cover rounded-t-md"
                             />
@@ -231,7 +231,7 @@ const Home = () => {
                     <div className="card shadow-xl border border-base-300 bg-base-100 rounded-md">
                         <figure>
                             <img
-                                src="https://via.placeholder.com/400x250"
+                                src="https://i.ibb.co.com/5rzd7R7/Mandrake-Hotel-Tropical-Garden-Design-02-1024x683.webp"
                                 alt="Outdoor Garden"
                                 className="h-48 w-full object-cover rounded-t-md"
                             />

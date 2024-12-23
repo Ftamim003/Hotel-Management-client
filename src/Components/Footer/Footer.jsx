@@ -6,9 +6,9 @@ const Footer = () => {
 
         <footer className="flex justify-center bg-base-200 text-base-content  px-10 py-4">
              <aside className="grid-flow-col items-center">
-                 <h1 className="text-xl font-bold text-center">Lingo Bingo</h1>
+                 <h1 className="text-xl font-bold text-center">GetawayInn</h1>
                  <p className="text-center">
-                 It is a place where you will learn with fun 
+                 It is a destination to give your inner soul peace
                  </p>
              </aside>
             
@@ -59,7 +59,7 @@ const Footer = () => {
          </footer>
           <div className="border-t bg-base-300 border-base-200 pt-4 text-center">
     <p className="text-sm">
-      &copy; {new Date().getFullYear()} Lingo Bingo. All rights reserved.
+      &copy; {new Date().getFullYear()} GetawayInn. All rights reserved.
     </p>
   </div>
      </div>
