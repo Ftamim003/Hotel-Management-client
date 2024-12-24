@@ -12,6 +12,7 @@ import AuthLayout from "../Components/Layouts/AuthLayouts/AuthLayout";
 import PrivateRoutes from "../Routes/PrivateRoute/PrivateRoutes";
 import AllRooms from "../Components/Pages/AllRooms/AllRooms";
 import SingleRoom from "../Components/Pages/SingleRoomDetails/SingleRoom";
+import NotFound from "../Components/NotFound/NotFound";
 
 
   const router = createBrowserRouter([
@@ -57,7 +58,14 @@ import SingleRoom from "../Components/Pages/SingleRoomDetails/SingleRoom";
             element:<SIgnUp></SIgnUp>
         }
        ]
-    }
+       
+    },
+
+  
+    {
+        path:'*',
+        element:<NotFound></NotFound>
+    },
   ]);
 
   export default router

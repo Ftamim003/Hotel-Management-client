@@ -60,8 +60,10 @@ const SingleRoom = () => {
             <h1 className="text-3xl font-bold mb-4">{room?.name}</h1>
             <img src={room.image} alt={room.name} className="w-full rounded-lg mb-6" />
             <p className="text-lg mb-4">{room.description}</p>
+            {room.availability ? <p className="text-lg font-bold">Available</p>:<p className="font-bold">Not Available at these moment</p> }
             <p className="text-lg mb-4">Price: ${room.price}</p>
             <p className="text-lg mb-4">Rating: {room.rating}/5</p>
+          
 
             {/* Reviews */}
             <h2 className="text-2xl font-semibold mb-4">Reviews</h2>
