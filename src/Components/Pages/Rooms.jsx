@@ -1,6 +1,12 @@
+import { useNavigate } from "react-router-dom";
+
 
 
 const Rooms = ({ room }) => {
+    const navigate = useNavigate();
+    const handleCardClick = (roomId) => {
+        navigate(`/room-details/${roomId}`);
+    };
     return (
         <div >
             <div key={room.id}  className="bg-white rounded-lg shadow-md overflow-hidden"
@@ -18,7 +24,7 @@ const Rooms = ({ room }) => {
                         {room.description}
                     </p>
                     <button
-                        onClick={() => navigate(`/rooms/${room.id}`)}
+                        onClick={() => handleCardClick(room._id)}
                         className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition"
                     >
                         Book Now
