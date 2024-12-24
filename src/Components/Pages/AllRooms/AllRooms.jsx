@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 
 const AllRooms = () => {
+    
     const [rooms, setRooms] = useState([]);
     const navigate = useNavigate();
 
@@ -10,7 +11,7 @@ const AllRooms = () => {
     useEffect(() => {
         const fetchRooms = async () => {
             try {
-                const response = await fetch("http://localhost:5000/all-rooms"); // API endpoint for fetching rooms
+                const response = await fetch("http://localhost:5000/all-rooms"); 
                 const data = await response.json();
                 setRooms(data);
             } catch (error) {
@@ -20,6 +21,10 @@ const AllRooms = () => {
 
         fetchRooms();
     }, []);
+
+    const handleCardClick = (roomId) => {
+        navigate(`/room-details/${roomId}`);
+    };
     return (
         <div className="py-10 bg-gray-50">
             <div className="container mx-auto px-6">
@@ -31,7 +36,7 @@ const AllRooms = () => {
                         <div
                             key={room.id}
                             className="cursor-pointer bg-white rounded-lg shadow hover:shadow-lg transition-transform transform hover:-translate-y-2"
-                            onClick={() => handleCardClick(room.id)}
+                            onClick={() => handleCardClick(room._id)}
                         >
                             <img
                                 src={room.image}
@@ -48,7 +53,7 @@ const AllRooms = () => {
                                 <div className="flex items-center">
                                     <span className="text-yellow-500 mr-2">
                                         {Array.from({ length: room.rating }, (_, i) => (
-                                            <span key={i}>&#9733;</span> // Star symbol
+                                            <span key={i}>&#9733;</span> 
                                         ))}
                                     </span>
                                     <span className="text-gray-600">

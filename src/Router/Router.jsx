@@ -11,6 +11,7 @@ import SIgnUp from "../Components/Pages/SignUp/SIgnUp";
 import AuthLayout from "../Components/Layouts/AuthLayouts/AuthLayout";
 import PrivateRoutes from "../Routes/PrivateRoute/PrivateRoutes";
 import AllRooms from "../Components/Pages/AllRooms/AllRooms";
+import SingleRoom from "../Components/Pages/SingleRoomDetails/SingleRoom";
 
 
   const router = createBrowserRouter([
@@ -27,6 +28,13 @@ import AllRooms from "../Components/Pages/AllRooms/AllRooms";
             path:'allRooms',
             element:<AllRooms></AllRooms>,
             
+        },
+        {
+
+            path:'/room-details/:id',
+            element:<PrivateRoutes><SingleRoom></SingleRoom></PrivateRoutes>,
+            loader: ({params})=> fetch(`http://localhost:5000/room-details/${params.id}`)
+
         },
         {
             path:'my-bookings',
