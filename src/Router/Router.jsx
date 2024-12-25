@@ -33,13 +33,13 @@ import NotFound from "../Components/NotFound/NotFound";
         {
 
             path:'/room-details/:id',
-            element:<PrivateRoutes><SingleRoom></SingleRoom></PrivateRoutes>,
+            element:<SingleRoom></SingleRoom>,
             loader: ({params})=> fetch(`http://localhost:5000/room-details/${params.id}`)
 
         },
         {
-            path:'my-bookings',
-            element:<PrivateRoutes><MyBookings></MyBookings></PrivateRoutes>
+            path:'my-bookings/',
+            element:<PrivateRoutes><MyBookings></MyBookings></PrivateRoutes>,
         },
       
       ]

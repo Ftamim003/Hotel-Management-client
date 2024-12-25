@@ -44,7 +44,7 @@ const Navbar = () => {
                             </div>
                             <div className="flex items-center w-72">
 
-                                <h1 className="font-bold text-2xl text-orange-600 hidden md:block"><NavLink to='/'>
+                                <h1 className="font-bold text-2xl text-[#1C3D5A] hidden md:block"><NavLink to='/'>
                                 GetawayInn  </NavLink> </h1>
                                 <div className="text-center mt-5 ">
                                 </div>
@@ -70,7 +70,7 @@ const Navbar = () => {
                                 <>
                                     <Link
                                         to="/auth/login"
-                                        className="btn btn-primary hover:bg-green-600 transition-colors duration-300 mr-6"
+                                        className="btn bg-[#1C3D5A] hover:bg-green-700 transition-colors duration-300 text-white"
                                     >
                                         Login
                                     </Link>

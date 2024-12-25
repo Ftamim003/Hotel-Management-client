@@ -15,6 +15,7 @@ const Home = () => {
         window.location.href = "/allRooms";
     };
 
+
     return (
         <>
        
@@ -50,7 +51,7 @@ const Home = () => {
                                 <button
                                     onClick={handleRedirect}
                                     aria-label="View Rooms"
-                                    className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded"
+                                    className="bg-[#28a745] hover:bg-[#3f814e] text-white px-4 py-2 rounded"
                                 >
                                     View Rooms
                                 </button>
@@ -76,7 +77,7 @@ const Home = () => {
                                 <button
                                     onClick={handleRedirect}
                                     aria-label="View Rooms"
-                                    className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded"
+                                    className="bg-[#28a745] hover:bg-[#3f814e] text-white px-4 py-2 rounded"
                                 >
                                     View Rooms
                                 </button>
@@ -102,7 +103,7 @@ const Home = () => {
                                 <button
                                     onClick={handleRedirect}
                                     aria-label="View Rooms"
-                                    className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded"
+                                    className="bg-[#28a745] hover:bg-[#3f814e] text-white px-4 py-2 rounded"
                                 >
                                     View Rooms
                                 </button>
@@ -198,7 +199,7 @@ const Home = () => {
                             <p className="font-medium text-blue-600 mb-4">
                                 Packages: Wedding, Reception, Anniversary Parties
                             </p>
-                            <button className="btn btn-primary w-full">
+                            <button className="btn bg-[#28a745] text-white  w-full">
                                 Request a Quote
                             </button>
                         </div>
@@ -221,7 +222,7 @@ const Home = () => {
                             <p className="font-medium text-blue-600 mb-4">
                                 Packages: Corporate Events, Seminars, Training Sessions
                             </p>
-                            <button className="btn btn-primary w-full">
+                            <button className="btn bg-[#28a745] text-white w-full">
                                 Request a Quote
                             </button>
                         </div>
@@ -245,7 +246,7 @@ const Home = () => {
                                 Packages: Birthday Parties, Engagements, Outdoor Weddings
                             </p>
                             <button
-                                className="btn btn-primary w-full"
+                                className="btn bg-[#28a745] text-white w-full"
                                 onClick={() => window.location.href = "tel:01791430459"} // 
                             >
                                 Request a Quote

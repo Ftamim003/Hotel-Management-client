@@ -1,9 +1,10 @@
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import { useContext, useState } from "react";
 import Modal from "react-modal";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { AuthContext } from "../../../Provider/AuthProvider";
+import Swal from "sweetalert2";
 
 
 const SingleRoom = () => {
@@ -13,6 +14,7 @@ const SingleRoom = () => {
     const [bookingModalOpen, setBookingModalOpen] = useState(false);
     const [bookingDate, setBookingDate] = useState(null);
     const { user } = useContext(AuthContext);
+    const navigate = useNavigate();
     //console.log(user)
 
     const handleAddReview = async (reviewData) => {
@@ -38,8 +40,9 @@ const SingleRoom = () => {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
+                    username:user?.displayName,
                     bookingDate,
-                    user: user.email,
+                    userEmail: user.email,
                 }),
             });
             if (!response.ok) {
@@ -83,16 +86,21 @@ const SingleRoom = () => {
 
             {/* Add Review Button */}
             <button
-                onClick={() => setReviewModalOpen(true)}
-                className="mt-6 bg-blue-500 text-white px-4 py-2 rounded shadow"
+                onClick={() => user? setReviewModalOpen(true): Swal.fire({
+                                    position: "top-end",
+                                    title: "You have to login first to give review",
+                                    timer: 3000,
+                                    showConfirmButton: false,
+                                })}
+                className="mt-6 bg-[#1C3D5A] text-white px-4 py-2 rounded shadow"
             >
                 Give Review
             </button>
 
             {/* Book Now Button */}
             <button
-                onClick={() => setBookingModalOpen(true)}
-                className="mt-6 ml-4 bg-green-500 text-white px-4 py-2 rounded shadow"
+                onClick={() => user ? setBookingModalOpen(true):  navigate("/auth/login")}
+                className="mt-6 ml-4 bg-[#28a745] text-white px-4 py-2 rounded shadow"
             >
                 Book Now
             </button>
