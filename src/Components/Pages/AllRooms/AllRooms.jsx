@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-
+import { motion } from "framer-motion";
 
 const AllRooms = () => {
     
@@ -32,9 +32,12 @@ const AllRooms = () => {
                     Featured Rooms
                 </h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {rooms.map((room) => (
-                        <div
-                            key={room.id}
+                    {rooms.map((room, index)  => (
+                        <motion.div
+                         key={room.id}
+                         initial={{ opacity: 0, y: 20 }}
+                          whileInView={{ opacity: 1, y: 0 }}
+                          transition={{ duration: 0.5, delay: index * 0.1 }}
                             className="cursor-pointer bg-white rounded-lg shadow hover:shadow-lg transition-transform transform hover:-translate-y-2"
                             onClick={() => handleCardClick(room._id)}
                         >
@@ -61,7 +64,8 @@ const AllRooms = () => {
                                     </span>
                                 </div>
                             </div>
-                        </div>
+                        
+                        </motion.div>
                     ))}
                 </div>
             </div>
