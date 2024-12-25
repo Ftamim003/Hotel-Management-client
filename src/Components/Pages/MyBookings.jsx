@@ -3,6 +3,8 @@ import { toast } from 'react-toastify';
 import { AuthContext } from '../../Provider/AuthProvider';
 import { useLoaderData, } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import axios from 'axios';
+import useAxios from '../../Hooks/useAxios';
 
 const MyBookings = () => {
 
@@ -12,17 +14,26 @@ const MyBookings = () => {
     const [selectedRoomId, setSelectedRoomId] = useState(null);
     const { user } = useContext(AuthContext)
 
+    const axiosSecure=useAxios()
+
     useEffect(() => {
         fetchBookings();
     }, []);
 
     const fetchBookings = async () => {
         try {
-            const response = await fetch(`http://localhost:5000/user-bookings?email=${user.email}`);
-            const data = await response.json();
+            // const response = await fetch(`http://localhost:5000/user-bookings?email=${user.email}`);
+            // const data = await response.json();
+            // axios.get(`http://localhost:5000/user-bookings?email=${user.email}`,{
+            //     withCredentials:true
+            // })
+            //.then(res=>{setBookings(res.data)})
 
+            axiosSecure.get(`/user-bookings?email=${user.email}`)
+            .then(res=>{setBookings(res.data)})
+            
             if (response.ok) {
-                setBookings(data);
+                //setBookings(data);
             } else {
                 toast.error(data.message || 'Failed to fetch bookings');
             }
