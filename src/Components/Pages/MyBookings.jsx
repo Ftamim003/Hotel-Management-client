@@ -31,16 +31,15 @@ const MyBookings = () => {
     const fetchBookings = async () => {
         try {
             
-
-            axiosSecure.get(`/user-bookings?email=${user?.email}`)
-            .then(res=>{setBookings(res.data)})
+            const response = await axiosSecure.get(`/user-bookings?email=${user?.email}`);
             
-            if (response.ok) {
-               
-            } else {
-                toast.error(data.message || 'Failed to fetch bookings');
+            if (response.status === 200) {
+                setBookings(response.data); // Update state with bookings (can be empty array)
+              } else {
+                toast.error('Failed to fetch bookings');
+              }
             }
-        } catch (error) {
+         catch (error) {
             toast.error('Error fetching bookings');
         } finally {
             setLoading(false);
@@ -72,12 +71,14 @@ const MyBookings = () => {
                     });
                     fetchBookings(); // Refresh bookings
                 } else {
-                    await Swal.fire({
-                        title: 'Error!',
-                        text:  data.error || 'Failed to cancel the booking. Please try again later.',
-                        icon: 'error',
-                        confirmButtonColor: '#d33',
-                    });
+                    const errorData = await response.json();
+                    console.log("Error response from server:", errorData);
+                await Swal.fire({
+                    title: 'Error!',
+                    text: errorData.error || 'Failed to cancel the booking. Please try again later.',
+                    icon: 'error',
+                    confirmButtonColor: '#d33',
+                });
                 }
     
             } catch (error) {
@@ -157,7 +158,7 @@ const MyBookings = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {bookings.map((booking) => (
+                        { bookings.length > 0 ? ( bookings.map((booking) => (
                             <tr key={booking._id}>
                                 <td>
                                     <img
@@ -203,7 +204,14 @@ const MyBookings = () => {
                                     </button>
                                 </td>
                             </tr>
-                        ))}
+                        ))) : (
+                            <tr>
+                              <td colSpan="5" className="text-center text-gray-500">
+                                No bookings found.
+                              </td>
+                            </tr>
+                          )
+                           }
                     </tbody>
                 </table>
             </div>

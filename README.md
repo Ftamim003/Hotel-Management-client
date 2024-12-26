@@ -1,6 +1,9 @@
 # Hotel Booking Platform(GetawayInn)
 ### The Hotel Booking Platform is a modern and user-friendly web application that allows users to discover and book hotel rooms seamlessly. It provides features like room discovery, detailed room information, booking management, and reviews to enhance the user experience.
 
+## Live Link
+https://modern-hotel-booking.web.app/
+
 ### Homepage:
 
 #### Slider showcasing featured rooms.
