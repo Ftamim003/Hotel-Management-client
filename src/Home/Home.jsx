@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Navigation } from "swiper/modules";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
@@ -10,11 +10,19 @@ import Rooms from "../Components/Pages/Rooms";
 import { motion } from "framer-motion";
 
 const Home = () => {
+
     const rooms = useLoaderData();
+    const [reviews, setReviews] = useState([]);
     const handleRedirect = () => {
         window.location.href = "/allRooms";
     };
 
+    useEffect(() => {
+        fetch('http://localhost:5000/reviews')
+            .then(res => res.json())
+            .then(data => setReviews(data))
+            .catch(err => console.error("Error fetching reviews:", err));
+    }, []);
 
     return (
         <>
@@ -159,6 +167,28 @@ const Home = () => {
                         }
 
                     </div>
+                    <div className="mt-10">
+                        <h2 className="text-2xl font-bold text-center mb-6">What Our Guests Say</h2>
+                        <Swiper
+                            autoplay={{ delay: 5000 }}
+                            loop={true}
+                            spaceBetween={30}
+                            slidesPerView={1}
+                        >
+                            {reviews.map(review => (
+                                <SwiperSlide key={review._id}>
+                                    <div className="p-6 bg-gray-100 rounded-lg shadow-md text-center">
+                                        <p className="text-lg text-gray-700 mb-4">{review.content}</p>
+                                        <h3 className="text-xl font-semibold">{review.userName}</h3>
+                                        <p className="text-sm text-gray-500">{new Date(review.timestamp).toLocaleDateString()}</p>
+                                        <p className="mt-2 text-yellow-500">
+                                            {"⭐".repeat(review.rating)} {/* Display stars based on rating */}
+                                        </p>
+                                    </div>
+                                </SwiperSlide>
+                            ))}
+                        </Swiper>
+                    </div>
                     <div>
                         <h2 className="text-3xl text-center font-bold mt-7">FAQs</h2>
                         <div>
@@ -179,15 +209,15 @@ const Home = () => {
 
                         </div>
                         <div >
-                            <motion.div  className="collapse collapse-plus bg-base-200 "
+                            <motion.div className="collapse collapse-plus bg-base-200 "
                                 initial={{ opacity: 0, y: 20 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.5 }}>
-                            <input type="radio" name="my-accordion-3" />
-                            <div className="collapse-title text-xl font-medium">What is your cancellation policy?</div>
-                            <div className="collapse-content">
-                                <p>You can cancel up to 24 hours before check-in for a full refund. Cancellations within 24 hours will incur a charge.</p>
-                            </div>
+                                <input type="radio" name="my-accordion-3" />
+                                <div className="collapse-title text-xl font-medium">What is your cancellation policy?</div>
+                                <div className="collapse-content">
+                                    <p>You can cancel up to 24 hours before check-in for a full refund. Cancellations within 24 hours will incur a charge.</p>
+                                </div>
                             </motion.div>
                         </div>
                         <div >
@@ -195,11 +225,11 @@ const Home = () => {
                                 initial={{ opacity: 0, y: 20 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.5 }}>
-                            <input type="radio" name="my-accordion-3" />
-                            <div className="collapse-title text-xl font-medium">Do you allow pets?</div>
-                            <div className="collapse-content">
-                                <p>Unfortunately, pets are not allowed in our hotel.</p>
-                            </div>
+                                <input type="radio" name="my-accordion-3" />
+                                <div className="collapse-title text-xl font-medium">Do you allow pets?</div>
+                                <div className="collapse-content">
+                                    <p>Unfortunately, pets are not allowed in our hotel.</p>
+                                </div>
                             </motion.div>
                         </div>
                     </div>

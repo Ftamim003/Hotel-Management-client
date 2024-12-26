@@ -37,11 +37,11 @@ const Login = () => {
             .catch((err) => {
                 setError({ ...error, login: err.code })
             });
-            Swal.fire({
-                icon: "error",
-                title: "Login Failed",
-                text: err.message,
-            });
+            // Swal.fire({
+            //     icon: "error",
+            //     title: "Login Failed",
+            //     //text: err.message,
+            // });
     }
 
     const handleGoogleSignIn=()=>{

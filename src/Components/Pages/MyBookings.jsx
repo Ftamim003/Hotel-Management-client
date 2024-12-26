@@ -5,6 +5,10 @@ import { useLoaderData, } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import axios from 'axios';
 import useAxios from '../../Hooks/useAxios';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
+
+
 
 const MyBookings = () => {
 
@@ -12,6 +16,10 @@ const MyBookings = () => {
     const [loading, setLoading] = useState(true);
     const [reviewModalOpen, setReviewModalOpen] = useState(false);
     const [selectedRoomId, setSelectedRoomId] = useState(null);
+
+    const [updateDateModalOpen, setUpdateDateModalOpen] = useState(false); 
+    const [selectedBookingId, setSelectedBookingId] = useState(null); 
+    const [newBookingDate, setNewBookingDate] = useState(new Date())
     const { user } = useContext(AuthContext)
 
     const axiosSecure=useAxios()
@@ -22,18 +30,13 @@ const MyBookings = () => {
 
     const fetchBookings = async () => {
         try {
-            // const response = await fetch(`http://localhost:5000/user-bookings?email=${user.email}`);
-            // const data = await response.json();
-            // axios.get(`http://localhost:5000/user-bookings?email=${user.email}`,{
-            //     withCredentials:true
-            // })
-            //.then(res=>{setBookings(res.data)})
+            
 
             axiosSecure.get(`/user-bookings?email=${user.email}`)
             .then(res=>{setBookings(res.data)})
             
             if (response.ok) {
-                //setBookings(data);
+               
             } else {
                 toast.error(data.message || 'Failed to fetch bookings');
             }
@@ -45,29 +48,54 @@ const MyBookings = () => {
     };
 
     const handleCancel = async (bookingId) => {
-        if (window.confirm('Are you sure you want to cancel this booking?')) {
+        const result = await Swal.fire({
+            title: 'Are you sure to cancel?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, cancel it!',
+            cancelButtonText: 'No, keep it',
+        });
+        if (result.isConfirmed) {
             try {
                 const response = await fetch(`http://localhost:5000/cancel-booking/${bookingId}`, {
                     method: 'DELETE',
                 });
 
                 if (response.ok) {
-                    toast.success('Booking cancelled successfully');
-                    fetchBookings();
+                    await Swal.fire({
+                        title: 'Cancelled!',
+                        text: 'Your booking has been cancelled successfully.',
+                        icon: 'success',
+                        confirmButtonColor: '#28a745',
+                    });
+                    fetchBookings(); // Refresh bookings
                 } else {
-                    toast.error('Failed to cancel booking');
+                    await Swal.fire({
+                        title: 'Error!',
+                        text: 'Failed to cancel the booking. Please try again later.',
+                        icon: 'error',
+                        confirmButtonColor: '#d33',
+                    });
                 }
+    
             } catch (error) {
                 toast.error('Error cancelling booking');
             }
         }
     };
 
-    const handleUpdateDate = async (bookingId) => {
-        const newDate = prompt('Enter new booking date (YYYY-MM-DD):');
+    const handleUpdateDate = (bookingId) => {
+        setSelectedBookingId(bookingId);  // Store the selected booking ID
+        setUpdateDateModalOpen(true);  // Open the modal for date update
+    };
+
+    const handleDateUpdateSubmit = async () => {
+        const newDate = newBookingDate.toISOString();
         if (newDate) {
             try {
-                const response = await fetch(`http://localhost:5000/update-booking-date/${bookingId}`, {
+                const response = await fetch(`http://localhost:5000/update-booking-date/${selectedBookingId}`, {
                     method: 'PATCH',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ newDate }),
@@ -76,6 +104,7 @@ const MyBookings = () => {
                 if (response.ok) {
                     toast.success('Booking date updated successfully');
                     fetchBookings();
+                    setUpdateDateModalOpen(false);
                 } else {
                     toast.error('Failed to update booking date');
                 }
@@ -110,7 +139,7 @@ const MyBookings = () => {
         }
     };
     
-    console.log(bookings)
+    
 
 
     return (
@@ -158,10 +187,7 @@ const MyBookings = () => {
                                         if (user) {
                                             setSelectedRoomId(booking.roomId);
                                             setReviewModalOpen(true);
-                                            // handleAddReview(
-                                            //     { open: true }, // Pass review data
-                                            //     booking._id // Pass roomId separately
-                                            // );
+                                            
                                         } else {
                                             Swal.fire({
                                                 position: "top-end",
@@ -260,7 +286,41 @@ const MyBookings = () => {
                     </div>
                 </div>
             )}
+           
 
+           {updateDateModalOpen && (
+                <div className="modal modal-open">
+                    <div className="modal-box bg-white rounded-lg shadow-lg max-w-md w-full p-6">
+                        <h2 className="text-2xl font-bold text-center mb-4">Update Booking Date</h2>
+                        <div className="form-control">
+                            <label className="label">
+                                <span className="label-text">Select New Booking Date</span>
+                            </label>
+                            <DatePicker
+                                selected={newBookingDate}
+                                onChange={(date) => setNewBookingDate(date)}
+                                minDate={new Date()}
+                                className="input input-bordered w-full"
+                            />
+                        </div>
+                        <div className="modal-action flex justify-end space-x-2">
+                            <button
+                                type="button"
+                                onClick={() => setUpdateDateModalOpen(false)}
+                                className="btn btn-outline"
+                            >
+                                Cancel
+                            </button>
+                            <button
+                                onClick={handleDateUpdateSubmit}
+                                className="btn btn-primary"
+                            >
+                                Update Date
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
 
         </div>
     );

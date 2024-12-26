@@ -1,6 +1,6 @@
 import { useLoaderData, useNavigate } from "react-router-dom";
 import { useContext, useState } from "react";
-import Modal from "react-modal";
+
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { AuthContext } from "../../../Provider/AuthProvider";
@@ -8,8 +8,10 @@ import Swal from "sweetalert2";
 
 
 const SingleRoom = () => {
-    // Get the room data from loader
-    const room = useLoaderData(); // Data will be available here
+    
+    const room = useLoaderData(); 
+    const [roomData, setRoomData] = useState(room)
+    const [available,setAvailable]=useState(room)
     const [reviewModalOpen, setReviewModalOpen] = useState(false);
     const [bookingModalOpen, setBookingModalOpen] = useState(false);
     const [bookingDate, setBookingDate] = useState(null);
@@ -18,8 +20,12 @@ const SingleRoom = () => {
     //console.log(user)
 
     const handleAddReview = async (reviewData) => {
+        if (!roomData || !roomData._id) {
+            console.error("Room ID is missing. Cannot add review.");
+            return;
+        }
         try {
-            const response = await fetch(`http://localhost:5000/rooms/${room._id}/reviews`, {
+            const response = await fetch(`http://localhost:5000/rooms/${roomData._id}/reviews`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(reviewData),
@@ -27,7 +33,12 @@ const SingleRoom = () => {
             if (!response.ok) {
                 throw new Error("Failed to add review.");
             }
-            const updatedRoom = await response.json();
+            const newReview = await response.json();
+            setRoomData((prevData) => ({
+                ...prevData,
+                reviews: newReview.reviews, // Assuming reviews is updated   
+            }));
+            console.log("Review added successfully:", newReview);
             // Update room details with new review
         } catch (error) {
             console.error(error);
@@ -45,10 +56,26 @@ const SingleRoom = () => {
                     userEmail: user.email,
                 }),
             });
-            if (!response.ok) {
-                throw new Error("Failed to book room.");
+            if (response.ok) {
+                // Show success notification
+                Swal.fire({
+                    title: 'Success!',
+                    text: 'Your booking is confirmed.',
+                    icon: 'success',
+                    confirmButtonColor: '#28a745',
+                });
+                setAvailable()
+                // Close the modal
+                setBookingModalOpen(false);
+            } else {
+                // Show error notification
+                Swal.fire({
+                    title: 'Error!',
+                    text: data.message || 'Failed to confirm booking.',
+                    icon: 'error',
+                    confirmButtonColor: '#d33',
+                });
             }
-            alert("Booking confirmed!");
         } catch (error) {
             console.error(error);
         }
@@ -63,16 +90,16 @@ const SingleRoom = () => {
             <h1 className="text-3xl font-bold mb-4">{room?.name}</h1>
             <img src={room.image} alt={room.name} className="w-full rounded-lg mb-6" />
             <p className="text-lg mb-4">{room.description}</p>
-            {room.availability ? <p className="text-lg font-bold">Available</p>:<p className="font-bold">Not Available at these moment</p> }
+            {available?.availability ? <p className="text-lg font-bold">Available</p>:<p className="font-bold">Room is booked</p> }
             <p className="text-lg mb-4">Price: ${room.price}</p>
             <p className="text-lg mb-4">Rating: {room.rating}/5</p>
           
 
             {/* Reviews */}
             <h2 className="text-2xl font-semibold mb-4">Reviews</h2>
-            {room.reviews.length > 0 ? (
+            { roomData.reviews.length > 0 ? (
                 <ul className="space-y-4">
-                    {room.reviews.map((review) => (
+                    {roomData.reviews.map((review) => (
                         <li key={review.id} className="bg-gray-100 p-4 rounded-lg shadow">
                             <p><strong>{review.username}</strong> ({new Date(review.timestamp).toLocaleDateString()})</p>
                             <p>Rating: {review.rating}/5</p>
@@ -100,7 +127,13 @@ const SingleRoom = () => {
             {/* Book Now Button */}
             <button
                 onClick={() => user ? setBookingModalOpen(true):  navigate("/auth/login")}
-                className="mt-6 ml-4 bg-[#28a745] text-white px-4 py-2 rounded shadow"
+                disabled={!available?.availability} // Disable the button if availability is false
+                className={`mt-6 ml-4 px-4 py-2 rounded shadow ${
+                    available?.availability 
+                        ? "bg-[#28a745] text-white cursor-pointer"
+                        : "bg-gray-400 text-gray-700 cursor-not-allowed"
+                }`}
+                
             >
                 Book Now
             </button>
