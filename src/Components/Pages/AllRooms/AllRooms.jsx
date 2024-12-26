@@ -32,20 +32,7 @@ const AllRooms = () => {
         fetchRooms(minPrice, maxPrice);
     };
 
-    // Fetch room data from the database
-    // useEffect(() => {
-    //     const fetchRooms = async () => {
-    //         try {
-    //             const response = await fetch("https://modern-hotel-booking-server.vercel.app/all-rooms"); 
-    //             const data = await response.json();
-    //             setRooms(data);
-    //         } catch (error) {
-    //             console.error("Error fetching rooms:", error);
-    //         }
-    //     };
-
-    //     fetchRooms();
-    // }, []);
+   
 
     const handleCardClick = (roomId) => {
         navigate(`/room-details/${roomId}`);
@@ -56,20 +43,20 @@ const AllRooms = () => {
                 <h2 className="text-3xl font-bold text-center mb-8">
                     Featured Rooms
                 </h2>
-                <div className="flex justify-center items-center mb-8 space-x-4">
+                <div className="flex justify-center items-center mb-8 p-3">
                     <input
                         type="number"
                         placeholder="Min Price"
                         value={minPrice}
                         onChange={(e) => setMinPrice(e.target.value)}
-                        className="p-2 border rounded w-40"
+                        className="p-2 border rounded w-36"
                     />
                     <input
                         type="number"
                         placeholder="Max Price"
                         value={maxPrice}
                         onChange={(e) => setMaxPrice(e.target.value)}
-                        className="p-2 border rounded w-40"
+                        className="p-2 border rounded w-36"
                     />
                     <button
                         onClick={handleFilter}
