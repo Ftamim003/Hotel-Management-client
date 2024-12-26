@@ -5,22 +5,47 @@ import { motion } from "framer-motion";
 const AllRooms = () => {
     
     const [rooms, setRooms] = useState([]);
+    const [minPrice, setMinPrice] = useState(""); 
+    const [maxPrice, setMaxPrice] = useState("");
     const navigate = useNavigate();
 
-    // Fetch room data from the database
-    useEffect(() => {
-        const fetchRooms = async () => {
-            try {
-                const response = await fetch("http://localhost:5000/all-rooms"); 
-                const data = await response.json();
-                setRooms(data);
-            } catch (error) {
-                console.error("Error fetching rooms:", error);
-            }
-        };
 
+    const fetchRooms = async (min, max) => {
+        try {
+            const response = await fetch(
+                `http://localhost:5000/all-rooms?minPrice=${min || 0}&maxPrice=${max || Infinity}`
+            );
+            const data = await response.json();
+            setRooms(data);
+        } catch (error) {
+            console.error("Error fetching rooms:", error);
+        }
+    };
+
+      // Fetch all rooms initially
+      useEffect(() => {
         fetchRooms();
     }, []);
+
+    // Handle Filter Button Click
+    const handleFilter = () => {
+        fetchRooms(minPrice, maxPrice);
+    };
+
+    // Fetch room data from the database
+    // useEffect(() => {
+    //     const fetchRooms = async () => {
+    //         try {
+    //             const response = await fetch("http://localhost:5000/all-rooms"); 
+    //             const data = await response.json();
+    //             setRooms(data);
+    //         } catch (error) {
+    //             console.error("Error fetching rooms:", error);
+    //         }
+    //     };
+
+    //     fetchRooms();
+    // }, []);
 
     const handleCardClick = (roomId) => {
         navigate(`/room-details/${roomId}`);
@@ -31,6 +56,29 @@ const AllRooms = () => {
                 <h2 className="text-3xl font-bold text-center mb-8">
                     Featured Rooms
                 </h2>
+                <div className="flex justify-center items-center mb-8 space-x-4">
+                    <input
+                        type="number"
+                        placeholder="Min Price"
+                        value={minPrice}
+                        onChange={(e) => setMinPrice(e.target.value)}
+                        className="p-2 border rounded w-40"
+                    />
+                    <input
+                        type="number"
+                        placeholder="Max Price"
+                        value={maxPrice}
+                        onChange={(e) => setMaxPrice(e.target.value)}
+                        className="p-2 border rounded w-40"
+                    />
+                    <button
+                        onClick={handleFilter}
+                        className="px-4 py-2 bg-blue-600 text-white rounded"
+                    >
+                        Filter
+                    </button>
+                </div>
+                
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {rooms.map((room, index)  => (
                         <motion.div
@@ -53,7 +101,10 @@ const AllRooms = () => {
                                 <p className="text-gray-600 mb-4">
                                     {room.description}
                                 </p>
-                                <div className="flex items-center">
+                                <div className="flex items-center justify-between">
+                                    <span className="text-gray-700 font-bold">
+                                        ${room.price}
+                                    </span>
                                     <span className="text-yellow-500 mr-2">
                                         {Array.from({ length: room.rating }, (_, i) => (
                                             <span key={i}>&#9733;</span> 

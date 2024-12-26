@@ -24,6 +24,7 @@ const Home = () => {
             .catch(err => console.error("Error fetching reviews:", err));
     }, []);
 
+    console.log(reviews)
     return (
         <>
 
@@ -170,20 +171,42 @@ const Home = () => {
                     <div className="mt-10">
                         <h2 className="text-2xl font-bold text-center mb-6">What Our Guests Say</h2>
                         <Swiper
-                            autoplay={{ delay: 5000 }}
+                             autoplay={{
+                                delay: 5000,
+                                disableOnInteraction: false,
+                            }}
                             loop={true}
                             spaceBetween={30}
                             slidesPerView={1}
                         >
-                            {reviews.map(review => (
+                            {reviews.map((review) => (
                                 <SwiperSlide key={review._id}>
-                                    <div className="p-6 bg-gray-100 rounded-lg shadow-md text-center">
-                                        <p className="text-lg text-gray-700 mb-4">{review.content}</p>
-                                        <h3 className="text-xl font-semibold">{review.userName}</h3>
-                                        <p className="text-sm text-gray-500">{new Date(review.timestamp).toLocaleDateString()}</p>
-                                        <p className="mt-2 text-yellow-500">
-                                            {"⭐".repeat(review.rating)} {/* Display stars based on rating */}
-                                        </p>
+                                    <div className="flex p-5 bg-gray-100 rounded-lg shadow-md">
+                                        {/* Room Image */}
+                                        <div>
+                                        <img
+                                            src={review.roomImage}
+                                            alt={review.roomName}
+                                            className="w-24 h-24 object-cover rounded-md mr-4"
+                                        />
+                                        <h4 className="text-sm text-gray-600 mb-2 ">{review.roomName}</h4>
+                                        </div>
+                                        {/* Review Content */}
+                                        <div className="flex-grow ">
+                                            <h3 className="text-xl font-bold text-blue-800 mb-2">{review.username}</h3>
+                                            
+                                            <p className="text-md text-gray-700">{review.comment}</p>
+                                        </div>
+
+                                        {/* Rating and Timestamp */}
+                                        <div className="flex flex-col items-center ml-4 text-gray-600">
+                                            <div className="text-yellow-500">
+                                                {"⭐".repeat(Math.round(review.rating))}
+                                            </div>
+                                            <p className="text-xs text-gray-500 mt-2">
+                                                {new Date(review.timestamp).toLocaleDateString()}
+                                            </p>
+                                        </div>
                                     </div>
                                 </SwiperSlide>
                             ))}
