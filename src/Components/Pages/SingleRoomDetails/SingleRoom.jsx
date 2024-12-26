@@ -25,7 +25,7 @@ const SingleRoom = () => {
             return;
         }
         try {
-            const response = await fetch(`http://localhost:5000/rooms/${roomData._id}/reviews`, {
+            const response = await fetch(`https://modern-hotel-booking-server.vercel.app/rooms/${roomData._id}/reviews`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(reviewData),
@@ -47,7 +47,7 @@ const SingleRoom = () => {
 
     const handleBooking = async () => {
         try {
-            const response = await fetch(`http://localhost:5000/book-room/${room._id}`, {
+            const response = await fetch(`https://modern-hotel-booking-server.vercel.app/book-room/${room._id}`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({

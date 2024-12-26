@@ -23,7 +23,7 @@ import NotFound from "../Components/NotFound/NotFound";
         {
             path: '/',
             element: <Home></Home>,
-            loader:()=> fetch('http://localhost:5000/rooms')
+            loader:()=> fetch('https://modern-hotel-booking-server.vercel.app/rooms')
         },
         {
             path:'allRooms',
@@ -34,7 +34,7 @@ import NotFound from "../Components/NotFound/NotFound";
 
             path:'/room-details/:id',
             element:<SingleRoom></SingleRoom>,
-            loader: ({params})=> fetch(`http://localhost:5000/room-details/${params.id}`)
+            loader: ({params})=> fetch(`https://modern-hotel-booking-server.vercel.app/room-details/${params.id}`)
 
         },
         {

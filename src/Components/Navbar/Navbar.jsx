@@ -75,7 +75,7 @@ const Navbar = () => {
                                         Login
                                     </Link>
                                     <Link
-                                        to="/auth/register"
+                                        to="/auth/signUp"
                                         className="btn bg-orange-400 hover:bg-blue-500 transition-colors duration-300"
                                     >
                                         Register

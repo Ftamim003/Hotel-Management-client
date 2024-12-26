@@ -13,22 +13,68 @@ const Home = () => {
 
     const rooms = useLoaderData();
     const [reviews, setReviews] = useState([]);
+    const [showModal, setShowModal] = useState(false);
     const handleRedirect = () => {
         window.location.href = "/allRooms";
     };
 
+
+
     useEffect(() => {
-        fetch('http://localhost:5000/reviews')
+        fetch('https://modern-hotel-booking-server.vercel.app/reviews')
             .then(res => res.json())
             .then(data => setReviews(data))
             .catch(err => console.error("Error fetching reviews:", err));
+
+        setShowModal(true);
     }, []);
 
     console.log(reviews)
+
+    const SpecialOffersModal = ({ show, onClose }) => {
+        if (!show) return null;
+
+        return (
+            <div className="fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center z-[50] backdrop-blur-sm animate-fadeIn">
+                <div className="bg-white p-8 rounded-lg shadow-2xl w-11/12 md:w-1/2 relative">
+                    <button
+                        onClick={onClose}
+                        className="absolute top-4 right-4 text-gray-500 hover:text-gray-800 text-xl font-bold"
+                        aria-label="Close Modal"
+                    >
+                        &times;
+                    </button>
+                    <h2 className="text-3xl font-extrabold text-center text-[#1c3d5a] mb-6">
+                        ❄️ Special Offers for Winter! ❄️
+                    </h2>
+                    <div className="overflow-hidden rounded-lg mb-6">
+                        <img
+                            src="https://i.ibb.co.com/cyQFSH4/stock-vector-winter-special-offer-shop-now-sale-vector-web-banner-lettering-template-2198387813.jpg"
+                            alt="Special Offers"
+                            className="w-full h-56 object-cover scale-110 hover:scale-100 transition-transform duration-300"
+                        />
+                    </div>
+                    <p className="text-lg text-gray-700 text-center mb-6 leading-relaxed">
+                        🏨 <strong>Exclusive 20% off</strong> on all bookings! Book now and save big in this winter season. Offer valid until <span className="text-[#28a745] font-semibold">December 31st</span>.
+                    </p>
+                    <div className="flex justify-center">
+                        <button
+                            className="bg-[#28a745] text-white px-8 py-3 rounded-full shadow-lg hover:bg-[#21773b] transition-colors duration-300"
+                            onClick={onClose}
+                        >
+                            Close
+                        </button>
+                    </div>
+                </div>
+            </div>
+        );
+    };
+
     return (
         <>
 
             <div className="w-full">
+                <SpecialOffersModal show={showModal} onClose={() => setShowModal(false)} />
 
                 {/* Banner Section */}
                 <div className="relative w-full h-72 lg:h-96 bg-gray-900">
@@ -123,31 +169,6 @@ const Home = () => {
                 </div>
 
                 {/* Map Section */}
-                <div className="mt-10">
-                    <h2 className="text-2xl font-bold text-center mb-6">
-                        Visit Us
-                    </h2>
-                    <div className="w-full h-96">
-                        <MapContainer
-                            center={[23.8103, 90.4125]}
-                            zoom={13}
-                            scrollWheelZoom={false}
-                            className="h-full w-full rounded-md shadow-lg"
-                        >
-                            <TileLayer
-                                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                                attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-                            />
-                            <Marker position={[51.505, -0.09]}>
-                                <Popup>
-                                    <strong>Hotel Location</strong> <br />
-                                    Come visit us for an unforgettable experience!
-                                </Popup>
-                            </Marker>
-                        </MapContainer>
-                    </div>
-                </div>
-
 
                 <div className="container mx-auto px-4 py-10">
                     <h2 className="text-3xl font-bold text-center mb-8">
@@ -171,7 +192,7 @@ const Home = () => {
                     <div className="mt-10">
                         <h2 className="text-2xl font-bold text-center mb-6">What Our Guests Say</h2>
                         <Swiper
-                             autoplay={{
+                            autoplay={{
                                 delay: 5000,
                                 disableOnInteraction: false,
                             }}
@@ -184,17 +205,17 @@ const Home = () => {
                                     <div className="flex p-5 bg-gray-100 rounded-lg shadow-md">
                                         {/* Room Image */}
                                         <div>
-                                        <img
-                                            src={review.roomImage}
-                                            alt={review.roomName}
-                                            className="w-24 h-24 object-cover rounded-md mr-4"
-                                        />
-                                        <h4 className="text-sm text-gray-600 mb-2 ">{review.roomName}</h4>
+                                            <img
+                                                src={review.roomImage}
+                                                alt={review.roomName}
+                                                className="w-24 h-24 object-cover rounded-md mr-4"
+                                            />
+                                            <h4 className="text-sm text-gray-600 mb-2 ">{review.roomName}</h4>
                                         </div>
                                         {/* Review Content */}
                                         <div className="flex-grow ">
                                             <h3 className="text-xl font-bold text-blue-800 mb-2">{review.username}</h3>
-                                            
+
                                             <p className="text-md text-gray-700">{review.comment}</p>
                                         </div>
 
@@ -335,6 +356,30 @@ const Home = () => {
                                 </button>
                             </div>
                         </div>
+                    </div>
+                </div>
+                <div className="mt-10">
+                    <h2 className="text-2xl font-bold text-center mb-6">
+                        Visit Us
+                    </h2>
+                    <div className="w-full h-96 m-5">
+                        <MapContainer
+                            center={[23.8103, 90.4125]}
+                            zoom={13}
+                            scrollWheelZoom={false}
+                            className="h-full w-full rounded-md shadow-lg"
+                        >
+                            <TileLayer
+                                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                                attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+                            />
+                            <Marker position={[51.505, -0.09]}>
+                                <Popup>
+                                    <strong>Hotel Location</strong> <br />
+                                    Come visit us for an unforgettable experience!
+                                </Popup>
+                            </Marker>
+                        </MapContainer>
                     </div>
                 </div>
 

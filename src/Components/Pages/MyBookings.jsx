@@ -32,7 +32,7 @@ const MyBookings = () => {
         try {
             
 
-            axiosSecure.get(`/user-bookings?email=${user.email}`)
+            axiosSecure.get(`/user-bookings?email=${user?.email}`)
             .then(res=>{setBookings(res.data)})
             
             if (response.ok) {
@@ -59,7 +59,7 @@ const MyBookings = () => {
         });
         if (result.isConfirmed) {
             try {
-                const response = await fetch(`http://localhost:5000/cancel-booking/${bookingId}`, {
+                const response = await fetch(`https://modern-hotel-booking-server.vercel.app/cancel-booking/${bookingId}`, {
                     method: 'DELETE',
                 });
 
@@ -74,7 +74,7 @@ const MyBookings = () => {
                 } else {
                     await Swal.fire({
                         title: 'Error!',
-                        text: 'Failed to cancel the booking. Please try again later.',
+                        text:  data.error || 'Failed to cancel the booking. Please try again later.',
                         icon: 'error',
                         confirmButtonColor: '#d33',
                     });
@@ -95,7 +95,7 @@ const MyBookings = () => {
         const newDate = newBookingDate.toISOString();
         if (newDate) {
             try {
-                const response = await fetch(`http://localhost:5000/update-booking-date/${selectedBookingId}`, {
+                const response = await fetch(`https://modern-hotel-booking-server.vercel.app/update-booking-date/${selectedBookingId}`, {
                     method: 'PATCH',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ newDate }),
@@ -122,7 +122,7 @@ const MyBookings = () => {
         }
     
         try {
-            const response = await fetch(`http://localhost:5000/rooms/${bookingId}/reviews`, {
+            const response = await fetch(`https://modern-hotel-booking-server.vercel.app/rooms/${bookingId}/reviews`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(reviewData),
@@ -172,20 +172,20 @@ const MyBookings = () => {
                                 <td>
                                     <button
                                         className="btn btn-xs btn-error "
-                                        onClick={() => handleCancel(booking._id)}
+                                        onClick={() => handleCancel(booking?._id)}
                                     >
                                         Cancel
                                     </button>
                                     <button
                                         className="btn btn-xs btn-info "
-                                        onClick={() => handleUpdateDate(booking._id)}
+                                        onClick={() => handleUpdateDate(booking?._id)}
                                     >
                                         Update Date
                                     </button>
                                     <button
                                        onClick={() => {
                                         if (user) {
-                                            setSelectedRoomId(booking.roomId);
+                                            setSelectedRoomId(booking?.roomId);
                                             setReviewModalOpen(true);
                                             
                                         } else {

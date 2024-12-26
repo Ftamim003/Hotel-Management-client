@@ -13,7 +13,7 @@ const AllRooms = () => {
     const fetchRooms = async (min, max) => {
         try {
             const response = await fetch(
-                `http://localhost:5000/all-rooms?minPrice=${min || 0}&maxPrice=${max || Infinity}`
+                `https://modern-hotel-booking-server.vercel.app/all-rooms?minPrice=${min || 0}&maxPrice=${max || Infinity}`
             );
             const data = await response.json();
             setRooms(data);
@@ -36,7 +36,7 @@ const AllRooms = () => {
     // useEffect(() => {
     //     const fetchRooms = async () => {
     //         try {
-    //             const response = await fetch("http://localhost:5000/all-rooms"); 
+    //             const response = await fetch("https://modern-hotel-booking-server.vercel.app/all-rooms"); 
     //             const data = await response.json();
     //             setRooms(data);
     //         } catch (error) {
@@ -110,9 +110,9 @@ const AllRooms = () => {
                                             <span key={i}>&#9733;</span> 
                                         ))}
                                     </span>
-                                    <span className="text-gray-600">
+                                    {/* <span className="text-gray-600">
                                         ({room.rating}/5)
-                                    </span>
+                                    </span> */}
                                 </div>
                             </div>
                         
