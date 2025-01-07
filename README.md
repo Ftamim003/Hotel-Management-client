@@ -55,3 +55,28 @@ https://modern-hotel-booking.web.app/
 
 #### 3.JWT for authentication
 
+### Dependencies
+
+#### "axios": "^1.7.9",
+#### "firebase": "^11.1.0",
+#### "framer-motion": "^11.15.0",
+#### "localforage": "^1.10.0",
+#### "react": "^18.3.1",
+#### "react-datepicker": "^7.5.0",
+#### "react-dom": "^18.3.1",
+#### "react-hook-form": "^7.54.2",
+#### "react-leaflet": "^4.2.1",
+#### "react-modal": "^3.16.3",
+#### "react-router-dom": "^7.1.0",
+#### "react-toastify": "^11.0.2",
+#### "sort-by": "^1.2.0",
+#### "sweetalert2": "^11.15.3",
+#### "swiper": "^11.1.15"
+
+
+### Guideline to the project in local machine
+  #### git clone from the repository in command prompt
+  #### then change directory
+  #### npm init
+  #### npm start 
+  #### npm run dev
