@@ -9,7 +9,7 @@ const AllRooms = () => {
     const [maxPrice, setMaxPrice] = useState("");
     const navigate = useNavigate();
 
-
+    
     const fetchRooms = async (min, max) => {
         try {
             const response = await fetch(
