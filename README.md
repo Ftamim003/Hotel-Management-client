@@ -76,7 +76,8 @@ https://modern-hotel-booking.web.app/
 
 ### Guideline to the project in local machine
   #### git clone from the repository in command prompt
-  #### then change directory
-  #### npm init
-  #### npm start 
-  #### npm run dev
+  #### -> change directory
+  #### -> after that npm install
+  #### -> then npm start
+  #### -> then code .  
+  #### -> and to run th npm run dev
