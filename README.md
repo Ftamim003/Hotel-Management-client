@@ -55,29 +55,33 @@ https://modern-hotel-booking.web.app/
 
 #### 3.JWT for authentication
 
-### Dependencies
+## Dependencies
 
-#### "axios": "^1.7.9",
-#### "firebase": "^11.1.0",
-#### "framer-motion": "^11.15.0",
-#### "localforage": "^1.10.0",
-#### "react": "^18.3.1",
-#### "react-datepicker": "^7.5.0",
-#### "react-dom": "^18.3.1",
-#### "react-hook-form": "^7.54.2",
-#### "react-leaflet": "^4.2.1",
-#### "react-modal": "^3.16.3",
-#### "react-router-dom": "^7.1.0",
-#### "react-toastify": "^11.0.2",
-#### "sort-by": "^1.2.0",
-#### "sweetalert2": "^11.15.3",
-#### "swiper": "^11.1.15"
+This project uses the following dependencies:
+
+- **[axios](https://github.com/axios/axios)**: Version `^1.7.9` - Promise-based HTTP client for making API requests.
+- **[firebase](https://firebase.google.com/)**: Version `^11.1.0` - Backend-as-a-Service (BaaS) for authentication, database, and more.
+- **[framer-motion](https://www.framer.com/motion/)**: Version `^11.15.0` - Library for declarative animations and gestures in React.
+- **[localforage](https://github.com/localForage/localForage)**: Version `^1.10.0` - Offline storage library for managing client-side data.
+- **[react](https://reactjs.org/)**: Version `^18.3.1` - JavaScript library for building user interfaces.
+- **[react-datepicker](https://reactdatepicker.com/)**: Version `^7.5.0` - A simple and customizable date picker component for React.
+- **[react-dom](https://reactjs.org/docs/react-dom.html)**: Version `^18.3.1` - React package for DOM rendering.
+- **[react-hook-form](https://react-hook-form.com/)**: Version `^7.54.2` - Performant form validation library for React.
+- **[react-leaflet](https://react-leaflet.js.org/)**: Version `^4.2.1` - React components for Leaflet maps.
+- **[react-modal](https://github.com/reactjs/react-modal)**: Version `^3.16.3` - Accessible modal dialog component for React.
+- **[react-router-dom](https://reactrouter.com/)**: Version `^7.1.0` - Declarative routing for React applications.
+- **[react-toastify](https://fkhadra.github.io/react-toastify/)**: Version `^11.0.2` - Library for adding toast notifications in React apps.
+- **[sort-by](https://github.com/staygrimm/sort-by)**: Version `^1.2.0` - Utility to sort arrays by object properties.
+- **[sweetalert2](https://sweetalert2.github.io/)**: Version `^11.15.3` - Beautiful, responsive, and customizable popups.
+- **[swiper](https://swiperjs.com/)**: Version `^11.1.15` - Modern slider and carousel library.
 
 
-### Guideline to the project in local machine
+
+### Guideline to run the project in local machine
   #### git clone from the repository in command prompt
   #### -> change directory
   #### -> after that npm install
   #### -> then npm start
   #### -> then code .  
   #### -> and to run th npm run dev
+  
