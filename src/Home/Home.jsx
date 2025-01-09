@@ -55,7 +55,7 @@ const Home = () => {
                         />
                     </div>
                     <p className="text-lg text-gray-700 text-center mb-6 leading-relaxed">
-                        🏨 <strong>Exclusive 20% off</strong> on all bookings! Book now and save big in this winter season. Offer valid until <span className="text-[#28a745] font-semibold">December 31st</span>.
+                        🏨 <strong>Exclusive 20% off</strong> on all bookings! Book now and save big in this winter season. Offer valid until <span className="text-[#28a745] font-semibold">January 31st</span>.
                     </p>
                     <div className="flex justify-center">
                         <button
