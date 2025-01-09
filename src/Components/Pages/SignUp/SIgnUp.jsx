@@ -77,7 +77,7 @@ const SIgnUp = () => {
     return (
         <div className="min-h-screen flex justify-center items-center">
         <div className="card bg-base-100 w-full max-w-lg shrink-0 p-10">
-            <h2 className="text-center text-2xl font-semibold ">Register Your Account</h2>
+            <h2 className="text-center text-3xl font-semibold text-[#1C3D5A]">Register Your Account</h2>
             <form onSubmit={handleSubmit} className="card-body">
                 <div className="form-control">
                     <label className="label">
@@ -116,12 +116,12 @@ const SIgnUp = () => {
 )}
                 </div>
                 <div className="form-control mt-6">
-                    <button className="btn btn-primary hover:bg-blue-600 transition-colors duration-300">Register</button>
+                    <button className="btn bg-[#1C3D5A] text-white hover:bg-[#265885] transition-colors duration-300">Register</button>
                 </div>
             </form>
-            <p className="text-center font-semibold"> Already have an account? <Link className="text-red-500" to='/auth/login'>Login</Link></p>
+            <p className="text-center font-semibold"> Already have an account? <Link className="text-blue-500" to='/auth/login'>Login</Link></p>
             <div className="*:w-full mt-5">
-                <button onClick={handleGoogleSignIn} className="btn text-blue-600">
+                <button onClick={handleGoogleSignIn} className="btn text-[#1C3D5A]">
                     Login with Google
                 </button>
             </div>

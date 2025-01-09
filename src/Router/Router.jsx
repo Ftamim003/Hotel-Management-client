@@ -13,6 +13,7 @@ import PrivateRoutes from "../Routes/PrivateRoute/PrivateRoutes";
 import AllRooms from "../Components/Pages/AllRooms/AllRooms";
 import SingleRoom from "../Components/Pages/SingleRoomDetails/SingleRoom";
 import NotFound from "../Components/NotFound/NotFound";
+import AboutUs from "../Components/Pages/AboutUs/AboutUs";
 
 
   const router = createBrowserRouter([
@@ -41,6 +42,10 @@ import NotFound from "../Components/NotFound/NotFound";
             path:'my-bookings/',
             element:<PrivateRoutes><MyBookings></MyBookings></PrivateRoutes>,
         },
+        {
+          path:'aboutUs',
+            element:<PrivateRoutes><AboutUs></AboutUs></PrivateRoutes>,
+        }
       
       ]
       

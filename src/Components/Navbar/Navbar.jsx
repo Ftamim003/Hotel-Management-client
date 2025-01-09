@@ -17,7 +17,7 @@ const Navbar = () => {
         }
     };
     return (
-        <div >
+        <div className="fixed w-full z-10 bg-white shadow-md">
             <div className="">
                 <nav className="flex items-center">
                     <div className="navbar ">
@@ -37,6 +37,7 @@ const Navbar = () => {
                                         user && <>
 
                                             <li><NavLink to='/my-bookings'>My Booking</NavLink></li>
+                                            <li><NavLink to='/aboutUs'>About Us</NavLink></li>
                                         </>
                                     }
 
@@ -59,6 +60,7 @@ const Navbar = () => {
                                 {
                                     user && <>
                                         <li><NavLink to='/my-bookings'> My Bookings  </NavLink></li>
+                                        <li><NavLink to='/aboutUs'>About Us</NavLink></li>
                                     </>
                                 }
 
@@ -70,13 +72,13 @@ const Navbar = () => {
                                 <>
                                     <Link
                                         to="/auth/login"
-                                        className="btn bg-[#1C3D5A] hover:bg-green-700 transition-colors duration-300 text-white"
+                                        className="btn bg-[#1C3D5A] hover:bg-[#45749e] transition-colors duration-300 text-white"
                                     >
                                         Login
                                     </Link>
                                     <Link
                                         to="/auth/signUp"
-                                        className="btn bg-orange-400 hover:bg-blue-500 transition-colors duration-300"
+                                        className="btn bg-green-600 hover:bg-green-700 hover:text-white transition-colors duration-300"
                                     >
                                         Register
                                     </Link>

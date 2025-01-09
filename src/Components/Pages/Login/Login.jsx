@@ -61,7 +61,7 @@ const Login = () => {
     return (
         <div className="min-h-screen  flex justify-center items-center p-4">
             <div className="card bg-white shadow-lg rounded-lg w-full max-w-lg p-8">
-                <h2 className="text-center text-3xl font-bold text-blue-600 mb-6">
+                <h2 className="text-center text-3xl font-bold text-[#1C3D5A] mb-6">
                     Login to Your Account
                 </h2>
                 <form onSubmit={handleLogin} className="space-y-6">
@@ -102,7 +102,7 @@ const Login = () => {
                         </Link>
                     </div>
                     <div className="form-control mt-4">
-                        <button className="btn bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-lg transition-colors duration-300">
+                        <button className="btn bg-[#1C3D5A] hover:bg-[#376083] text-white py-2 px-4 rounded-lg transition-colors duration-300">
                             Login
                         </button>
                     </div>
@@ -116,7 +116,7 @@ const Login = () => {
                 <div className="w-full mt-8">
                     <button
                         onClick={handleGoogleSignIn}
-                        className="btn bg-white border border-gray-300 hover:border-blue-500 text-gray-700 hover:text-blue-600 w-full flex items-center justify-center py-2 px-4 rounded-lg shadow-sm hover:shadow-lg transition-all duration-300"
+                        className="btn bg-white border border-gray-300 hover:border-[#1C3D5A] text-gray-700 hover:text-[#1C3D5A] w-full flex items-center justify-center py-2 px-4 rounded-lg shadow-sm hover:shadow-lg transition-all duration-300"
                     >
                         Login with Google
                     </button>

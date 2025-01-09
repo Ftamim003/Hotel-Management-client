@@ -73,7 +73,7 @@ const Home = () => {
     return (
         <>
 
-            <div className="w-full">
+            <div className="w-full ">
                 <SpecialOffersModal show={showModal} onClose={() => setShowModal(false)} />
 
                 {/* Banner Section */}
