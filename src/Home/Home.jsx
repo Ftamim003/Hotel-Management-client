@@ -168,7 +168,7 @@ const Home = () => {
                     </Swiper>
                 </div>
 
-                {/* Map Section */}
+               
 
                 <div className="container mx-auto px-4 py-10">
                     <h2 className="text-3xl font-bold text-center mb-8">
@@ -282,82 +282,6 @@ const Home = () => {
                 {/* Event hosting information */}
 
 
-                <div className="max-w-7xl mx-auto px-6 py-10">
-                    <h2 className="text-3xl font-bold text-center mb-8">Event Hosting & Packages</h2>
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                        {/* Grand Banquet Hall */}
-                        <div className="card shadow-xl border border-base-300 bg-base-100 rounded-md">
-                            <figure>
-                                <img
-                                    src="https://i.ibb.co.com/6Hn0G8J/grand-banquets-chembur-mumbai.jpg"
-                                    alt="Grand Banquet Hall"
-                                    className="h-48 w-full object-cover rounded-t-md"
-                                />
-                            </figure>
-                            <div className="card-body">
-                                <h3 className="text-xl font-bold mb-2">Grand Banquet Hall</h3>
-                                <p className="text-gray-600 mb-4">
-                                    Perfect for weddings and large gatherings, accommodating up to 500 guests.
-                                </p>
-                                <p className="font-medium text-blue-600 mb-4">
-                                    Packages: Wedding, Reception, Anniversary Parties
-                                </p>
-                                <button className="btn bg-[#28a745] text-white  w-full">
-                                    Request a Quote
-                                </button>
-                            </div>
-                        </div>
-
-                        {/* Conference Room */}
-                        <div className="card shadow-xl border border-base-300 bg-base-100 rounded-md">
-                            <figure>
-                                <img
-                                    src="https://i.ibb.co.com/fdfdypX/Modern-meeting-room-with-advanced-technology.webp"
-                                    alt="Conference Room"
-                                    className="h-48 w-full object-cover rounded-t-md"
-                                />
-                            </figure>
-                            <div className="card-body">
-                                <h3 className="text-xl font-bold mb-2">Conference Room</h3>
-                                <p className="text-gray-600 mb-4">
-                                    Ideal for corporate meetings, workshops, and seminars with modern amenities.
-                                </p>
-                                <p className="font-medium text-blue-600 mb-4">
-                                    Packages: Corporate Events, Seminars, Training Sessions
-                                </p>
-                                <button className="btn bg-[#28a745] text-white w-full">
-                                    Request a Quote
-                                </button>
-                            </div>
-                        </div>
-
-                        {/* Outdoor Garden */}
-                        <div className="card shadow-xl border border-base-300 bg-base-100 rounded-md">
-                            <figure>
-                                <img
-                                    src="https://i.ibb.co.com/5rzd7R7/Mandrake-Hotel-Tropical-Garden-Design-02-1024x683.webp"
-                                    alt="Outdoor Garden"
-                                    className="h-48 w-full object-cover rounded-t-md"
-                                />
-                            </figure>
-                            <div className="card-body">
-                                <h3 className="text-xl font-bold mb-2">Outdoor Garden</h3>
-                                <p className="text-gray-600 mb-4">
-                                    An elegant open-air space for parties and celebrations with a scenic view.
-                                </p>
-                                <p className="font-medium text-blue-600 mb-4">
-                                    Packages: Birthday Parties, Engagements, Outdoor Weddings
-                                </p>
-                                <button
-                                    className="btn bg-[#28a745] text-white w-full"
-                                    onClick={() => window.location.href = "tel:01791430459"} // 
-                                >
-                                    Request a Quote
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
                 <div className="mt-10">
                     <h2 className="text-2xl font-bold text-center mb-6">
                         Visit Us

@@ -4,14 +4,14 @@ import { AuthContext } from "../../Provider/AuthProvider";
 
 
 const Navbar = () => {
-    const {user,setUser,logOut}=useContext(AuthContext)
+    const { user, setUser, logOut } = useContext(AuthContext)
 
-    
+
     const handleLogout = async () => {
         try {
             await logOut();
             setUser(null); // Clear user state explicitly
-           // Redirect to login page after logout
+            // Redirect to login page after logout
         } catch (error) {
             console.error("Logout failed", error);
         }
@@ -31,22 +31,24 @@ const Navbar = () => {
                                     className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[2] mt-3 w-28 p-2 shadow">
                                     <li><NavLink to='/'> Home </NavLink></li>
                                     <li><NavLink to='/allRooms'>All Rooms </NavLink></li>
-                                   
+
 
                                     {
                                         user && <>
 
                                             <li><NavLink to='/my-bookings'>My Booking</NavLink></li>
-                                            <li><NavLink to='/aboutUs'>About Us</NavLink></li>
+
                                         </>
                                     }
+
+                                    <li><NavLink to='/aboutUs'>About Us</NavLink></li>
 
                                 </ul>
                             </div>
                             <div className="flex items-center w-72">
 
                                 <h1 className="font-bold text-2xl text-[#1C3D5A] hidden md:block"><NavLink to='/'>
-                                GetawayInn  </NavLink> </h1>
+                                    GetawayInn  </NavLink> </h1>
                                 <div className="text-center mt-5 ">
                                 </div>
 
@@ -60,11 +62,13 @@ const Navbar = () => {
                                 {
                                     user && <>
                                         <li><NavLink to='/my-bookings'> My Bookings  </NavLink></li>
-                                        <li><NavLink to='/aboutUs'>About Us</NavLink></li>
+
                                     </>
                                 }
 
-                               
+                                <li><NavLink to='/aboutUs'>About Us</NavLink></li>
+
+
                             </ul>
                         </div>
                         <div className="navbar-end flex gap-7">

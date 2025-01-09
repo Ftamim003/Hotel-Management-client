@@ -44,7 +44,7 @@ import AboutUs from "../Components/Pages/AboutUs/AboutUs";
         },
         {
           path:'aboutUs',
-            element:<PrivateRoutes><AboutUs></AboutUs></PrivateRoutes>,
+           element:<AboutUs></AboutUs>
         }
       
       ]
