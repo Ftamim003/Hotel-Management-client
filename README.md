@@ -1,87 +1,93 @@
-# Hotel Booking Platform(GetawayInn)
-### The Hotel Booking Platform is a modern and user-friendly web application that allows users to discover and book hotel rooms seamlessly. It provides features like room discovery, detailed room information, booking management, and reviews to enhance the user experience.
+# 🏨 Hotel Booking Platform (GetawayInn)
 
-## Live Link
-https://modern-hotel-booking.web.app/
+A modern and user-friendly hotel booking web application that enables users to discover and book hotel rooms seamlessly. It provides features such as room discovery, detailed room information, booking management, and customer reviews to enhance the user experience.
 
-### Homepage:
+## 🚀 Live Site
+[GetawayInn](https://modern-hotel-booking.web.app/)
 
-#### Slider showcasing featured rooms.
+---
 
-#### Reviews section to highlight customer experiences.
+## 🛠️ Technologies Used
 
-#### Integrated map using react-leaflet to locate hotels.
+### Frontend:
+- **React.js** - Component-based UI development.
+- **DaisyUI** - Pre-designed UI components.
+- **React Leaflet** - Interactive maps integration.
+- **Moment.js** - Date and time manipulation.
+- **Framer Motion** - Animation and transition effects.
+- **React Datepicker** - Date selection input.
 
-#### Promotional pop-ups to display offers.
+### Backend:
+- **Node.js** - Server-side logic.
+- **Express.js** - Backend framework.
+- **MongoDB** - NoSQL database for storing booking and user data.
+- **JWT (JSON Web Token)** - Secure authentication and API access.
 
+---
 
-### User Authentication:
+## ✨ Features
 
-#### Secure login using email/password and social login options.
+### 🏠 Homepage:
+- **Featured Rooms Slider** - Showcases highlighted rooms.
+- **Customer Reviews Section** - Displays user testimonials.
+- **Hotel Location Map** - Integrated with **React Leaflet** for easy navigation.
+- **Promotional Pop-ups** - Displays special offers and discounts.
 
-#### JWT-based authentication for secure API access.
+### 🔐 User Authentication:
+- **Secure Login & Registration** - Supports email/password and social logins.
+- **JWT-Based Authentication** - Ensures secure API communication.
 
+### 🏨 Room Details Page:
+- **Comprehensive Room Information** - Displays room descriptions, amenities, and images.
+- **Reviews with Sorting** - Users can sort and read hotel reviews.
+- **Date Picker for Booking** - Allows users to select check-in and check-out dates easily.
 
-#### Room Details Page:
+---
 
-#### Comprehensive room information.
-
-#### Reviews with sorting capabilities.
-
-#### Booking options with a date picker integration.
-
-
-### Technologies & NPM Packages Used
-
-#### Frontend:
-
-#### 1.React.js
-
-#### 2.DaisyUI for styled components
-
-#### 3.react-leaflet for map integration
-
-#### 4.moment.js for date handling
-
-#### 5.framer-motion for animations
-
-#### 6.react-datepicker for date picker
-
-#### Backend:
-
-#### 1.Node.js with Express.js
-
-#### 2.MongoDB for the database
-
-#### 3.JWT for authentication
-
-## Dependencies
+## 📦 Dependencies
 
 This project uses the following dependencies:
 
-- **[axios](https://github.com/axios/axios)**: Version `^1.7.9` - Promise-based HTTP client for making API requests.
-- **[firebase](https://firebase.google.com/)**: Version `^11.1.0` - Backend-as-a-Service (BaaS) for authentication, database, and more.
-- **[framer-motion](https://www.framer.com/motion/)**: Version `^11.15.0` - Library for declarative animations and gestures in React.
-- **[localforage](https://github.com/localForage/localForage)**: Version `^1.10.0` - Offline storage library for managing client-side data.
-- **[react](https://reactjs.org/)**: Version `^18.3.1` - JavaScript library for building user interfaces.
-- **[react-datepicker](https://reactdatepicker.com/)**: Version `^7.5.0` - A simple and customizable date picker component for React.
-- **[react-dom](https://reactjs.org/docs/react-dom.html)**: Version `^18.3.1` - React package for DOM rendering.
-- **[react-hook-form](https://react-hook-form.com/)**: Version `^7.54.2` - Performant form validation library for React.
-- **[react-leaflet](https://react-leaflet.js.org/)**: Version `^4.2.1` - React components for Leaflet maps.
-- **[react-modal](https://github.com/reactjs/react-modal)**: Version `^3.16.3` - Accessible modal dialog component for React.
-- **[react-router-dom](https://reactrouter.com/)**: Version `^7.1.0` - Declarative routing for React applications.
-- **[react-toastify](https://fkhadra.github.io/react-toastify/)**: Version `^11.0.2` - Library for adding toast notifications in React apps.
-- **[sort-by](https://github.com/staygrimm/sort-by)**: Version `^1.2.0` - Utility to sort arrays by object properties.
-- **[sweetalert2](https://sweetalert2.github.io/)**: Version `^11.15.3` - Beautiful, responsive, and customizable popups.
-- **[swiper](https://swiperjs.com/)**: Version `^11.1.15` - Modern slider and carousel library.
+- **[Axios](https://github.com/axios/axios)** (`^1.7.9`) - For making API requests.
+- **[Firebase](https://firebase.google.com/)** (`^11.1.0`) - Backend services including authentication.
+- **[Framer Motion](https://www.framer.com/motion/)** (`^11.15.0`) - Declarative animations and gestures.
+- **[LocalForage](https://github.com/localForage/localForage)** (`^1.10.0`) - Client-side offline storage.
+- **[React](https://reactjs.org/)** (`^18.3.1`) - Core UI library.
+- **[React Datepicker](https://reactdatepicker.com/)** (`^7.5.0`) - Customizable date picker.
+- **[React DOM](https://reactjs.org/docs/react-dom.html)** (`^18.3.1`) - For rendering React components.
+- **[React Hook Form](https://react-hook-form.com/)** (`^7.54.2`) - Efficient form validation.
+- **[React Leaflet](https://react-leaflet.js.org/)** (`^4.2.1`) - Interactive maps for hotel locations.
+- **[React Modal](https://github.com/reactjs/react-modal)** (`^3.16.3`) - Accessible modals.
+- **[React Router DOM](https://reactrouter.com/)** (`^7.1.0`) - Routing for seamless navigation.
+- **[React Toastify](https://fkhadra.github.io/react-toastify/)** (`^11.0.2`) - Toast notifications for feedback.
+- **[Sort By](https://github.com/staygrimm/sort-by)** (`^1.2.0`) - Sorting utility for data.
+- **[SweetAlert2](https://sweetalert2.github.io/)** (`^11.15.3`) - Customizable popups and alerts.
+- **[Swiper](https://swiperjs.com/)** (`^11.1.15`) - Modern slider and carousel library.
 
+---
 
+## ⚙️ How to Run the Project Locally
 
-### Guideline to run the project in local machine
-  #### git clone from the repository in command prompt
-  #### -> change directory
-  #### -> after that npm install
-  #### -> then npm start
-  #### -> then code .  
-  #### -> and to run: npm run dev
-  
+Follow these steps to set up and run the project:
+
+1. **Clone the repository**  
+   ```sh
+   git clone <repository_url>
+   
+2. **Navigate to the project directory**  
+   ```sh
+   cd getawayinn
+
+3. **Install dependencies**  
+   ```sh
+   npm install
+
+4. **Start the development server**  
+   ```sh
+   npm run dev
+
+5. **Open the project in VS Code (optional)**  
+   ```sh
+  code .
+   
+   
