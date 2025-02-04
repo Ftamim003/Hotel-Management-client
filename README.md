@@ -83,5 +83,5 @@ This project uses the following dependencies:
   #### -> after that npm install
   #### -> then npm start
   #### -> then code .  
-  #### -> and to run th npm run dev
+  #### -> and to run: npm run dev
   
