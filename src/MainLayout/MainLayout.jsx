@@ -9,6 +9,7 @@ const MainLayout = () => {
         <div className="">
             
         <Navbar></Navbar>
+        
         <div className="relative pt-24 min-h-[calc(100vh-200px)] md:min-h-[calc(100vh-230px)] w-11/12 mx-auto">
 
             <Outlet></Outlet>

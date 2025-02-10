@@ -44,7 +44,7 @@ const Home = () => {
                     >
                         &times;
                     </button>
-                    <h2 className="text-3xl font-extrabold text-center text-[#1c3d5a] mb-6">
+                    <h2 className="text-2xl md:text-3xl font-extrabold text-center text-[#1c3d5a] mb-6">
                         ❄️ Special Offers for Winter! ❄️
                     </h2>
                     <div className="overflow-hidden rounded-lg mb-6">
