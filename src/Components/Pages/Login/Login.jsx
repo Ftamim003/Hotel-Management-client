@@ -3,6 +3,7 @@ import { AuthContext } from '../../../Provider/AuthProvider';
 import { Link, useLocation, useNavigate,  } from 'react-router-dom';
 
 import Swal from 'sweetalert2';
+import { sendPasswordResetEmail } from 'firebase/auth';
 
 const Login = () => {
 
@@ -57,6 +58,34 @@ const Login = () => {
                 });
         })
     }
+
+    const handleForgetPassword = () => {
+        if (!email) {
+            console.log("No email address provided");
+            Swal.fire({
+                icon: "error",
+                title: "Error",
+                text: "Please provide a valid email address.",
+            });
+        } else {
+            sendPasswordResetEmail(auth, email)
+                .then(() => {
+                    Swal.fire({
+                        icon: "success",
+                        title: "Success",
+                        text: "Password reset email has been sent. Please check your inbox.",
+                    });
+                })
+                .catch((error) => {
+                    console.error("Error sending password reset email:", error);
+                    Swal.fire({
+                        icon: "error",
+                        title: "Error",
+                        text: "Failed to send password reset email. Please try again.",
+                    });
+                });
+        }
+    };
 
     return (
         <div className="min-h-screen  flex justify-center items-center p-4">
