@@ -93,13 +93,7 @@ const Login = () => {
                         {error.login && (
                             <label className="label text-sm text-red-600">{error.login}</label>
                         )}
-                        <Link
-                            to="/auth/forgetPassword"
-                            state={{ email }}
-                            className="label mt-2 text-sm text-blue-500 hover:underline"
-                        >
-                            Forgot password?
-                        </Link>
+                         <label onClick={handleForgetPassword} className="label mt-2 text-sm text-blue-500 hover:underline"> <a href="#">Forget Password?</a></label>
                     </div>
                     <div className="form-control mt-4">
                         <button className="btn bg-[#1C3D5A] hover:bg-[#376083] text-white py-2 px-4 rounded-lg transition-colors duration-300">
