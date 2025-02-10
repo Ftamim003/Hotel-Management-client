@@ -4,6 +4,7 @@ import { Link, useLocation, useNavigate,  } from 'react-router-dom';
 
 import Swal from 'sweetalert2';
 import { sendPasswordResetEmail } from 'firebase/auth';
+import auth from '../../../Firebase/firebase.config';
 
 const Login = () => {
 
