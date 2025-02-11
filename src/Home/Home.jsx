@@ -168,7 +168,7 @@ const Home = () => {
                     </Swiper>
                 </div>
 
-               
+
 
                 <div className="container mx-auto px-4 py-10">
                     <h2 className="text-3xl font-bold text-center mb-8">
@@ -190,49 +190,65 @@ const Home = () => {
 
                     </div>
                     <div className="mt-10">
-                        <h2 className="text-2xl font-bold text-center mb-6">What Our Guests Say</h2>
-                        <Swiper
-                            autoplay={{
-                                delay: 5000,
-                                disableOnInteraction: false,
-                            }}
-                            loop={true}
-                            spaceBetween={30}
-                            slidesPerView={1}
-                        >
-                            {reviews.map((review) => (
-                                <SwiperSlide key={review._id}>
-                                    <div className="flex p-5 bg-gray-100 rounded-lg shadow-md">
-                                        {/* Room Image */}
-                                        <div>
-                                            <img
-                                                src={review.roomImage}
-                                                alt={review.roomName}
-                                                className="w-24 h-24 object-cover rounded-md mr-4"
-                                            />
-                                            <h4 className="text-sm text-gray-600 mb-2 ">{review.roomName}</h4>
-                                        </div>
-                                        {/* Review Content */}
-                                        <div className="flex-grow ">
-                                            <h3 className="text-xl font-bold text-blue-800 mb-2">{review.username}</h3>
+      {/* Section Title */}
+      <div className="mt-10  ">
+      {/* Section Title */}
+      <h2 className="text-3xl font-extrabold text-center mb-8 ">
+        What Our Guests Say
+      </h2>
 
-                                            <p className="text-md text-gray-700">{review.comment}</p>
-                                        </div>
+      <Swiper
+        autoplay={{ delay: 5000, disableOnInteraction: false }}
+        loop={true}
+        spaceBetween={30}
+        slidesPerView={1}
+        breakpoints={{
+          768: { slidesPerView: 2 },
+          1024: { slidesPerView: 3 },
+        }}
+      >
+        {reviews.map((review) => (
+          <SwiperSlide key={review._id}>
+            {/* Animated Review Card */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="p-6 bg-white border border-gray-200 rounded-lg shadow-lg transition-transform transform hover:scale-105 flex flex-col justify-between min-h-[350px]"
+            >
+              {/* Room Image */}
+              <div className="flex flex-col items-center">
+                <img
+                  src={review.roomImage}
+                  alt={review.roomName}
+                  className="w-24 h-24 object-cover rounded-lg shadow-md"
+                />
+                <h4 className="text-sm text-gray-600 mt-2">{review.roomName}</h4>
+              </div>
 
-                                        {/* Rating and Timestamp */}
-                                        <div className="flex flex-col items-center ml-4 text-gray-600">
-                                            <div className="text-yellow-500">
-                                                {"⭐".repeat(Math.round(review.rating))}
-                                            </div>
-                                            <p className="text-xs text-gray-500 mt-2">
-                                                {new Date(review.timestamp).toLocaleDateString()}
-                                            </p>
-                                        </div>
-                                    </div>
-                                </SwiperSlide>
-                            ))}
-                        </Swiper>
-                    </div>
+              {/* Review Content */}
+              <div className="flex flex-col items-center text-center mt-4">
+                <h3 className="text-lg font-semibold text-blue-800">{review.username}</h3>
+                <p className="text-md text-gray-700 italic line-clamp-4">
+                  {review.comment}
+                </p>
+              </div>
+
+              {/* Rating & Timestamp */}
+              <div className="flex justify-between items-center mt-4 text-gray-600">
+                <div className="text-yellow-500 text-lg">
+                  {"⭐".repeat(Math.round(review.rating))}
+                </div>
+                <p className="text-xs text-gray-500">
+                  {new Date(review.timestamp).toLocaleDateString()}
+                </p>
+              </div>
+            </motion.div>
+          </SwiperSlide>
+        ))}
+      </Swiper>
+    </div>
+    </div>
                     <div>
                         <h2 className="text-3xl text-center font-bold mt-7">FAQs</h2>
                         <div>
